@@ -10,7 +10,8 @@ import { MasterVehicle } from './models/master-vehicle.model';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
-    
+    let masterVehice = new MasterVehicle();
+    console.log(masterVehice);  
   }
 }
 

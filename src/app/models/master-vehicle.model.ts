@@ -6,9 +6,18 @@ export class MasterVehicle {
 
     public constructor(){
        // types.push(new VehicleType("bus", new VehicleBrand[]))
+        this.types = [];
         let bmw = new VehicleBrand("BMW", ["m4","m5","m6"]);
         let fiat = new VehicleBrand("Fiat", ["125","126p","panda"]);
         let passengerCar = new VehicleType("passengerCar", [bmw, fiat]);
+        let scania = new VehicleBrand("Scania", ["R142", "R410", "R650 V8"]);
+        let man = new VehicleBrand("MAN", ["TGS", "TGM", "TGL"]);
+        let truck = new VehicleType("Truck", [scania, man]);
+        let suzuki = new VehicleBrand("Suzuki", ["Katana", "GSX-R100", "GSX-R1000R"]);
+        let kawasaki = new VehicleBrand("Kawasaki", ["H2", "H2R", "Ninja RR"]);
+        let motorcycle = new VehicleType("Motorcycle", [suzuki, kawasaki]);
         this.types.push(passengerCar);
+        this.types.push(truck);
+        this.types.push(motorcycle);
     }
 }

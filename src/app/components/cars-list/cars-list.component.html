@@ -1,9 +1,9 @@
-Cars-list
-<div id = "list"></div>
-<script type="text/javscript">
-
-    import { MasterVehicle } from '../../models/master-vehicle.model.ts';
-    let asdf = new MasterVehicle();
-    document.getElementById('list').innerHTML = JSON.stringify(asdf);
-
-</script>
+<h1>Lista Samochodów</h1>
+<div id = "list">
+    <div *ngFor = "let type of masterVehicle.types" class = "type-node">
+        {{type.name}} 
+        <div *ngFor = "let brand of type.brands">
+            {{brand.name}}
+        </div>
+    </div>
+</div>

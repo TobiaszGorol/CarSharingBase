@@ -1,9 +1,4 @@
-a.active-link {
-    display: inline-block;
-
-}
-
-.tile{
+.tile {
     float:left;
     padding: 10px;
     background-color: #004477;
@@ -15,6 +10,10 @@ a.active-link {
     color: #7788bb;
 }
 
-.tile:hover{
+.tile:hover {
     background-color: #002255;
+}
+
+a.active-link .tile {
+    color: rgb(255, 238, 0);
 }
