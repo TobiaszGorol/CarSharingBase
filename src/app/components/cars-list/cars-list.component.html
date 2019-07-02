@@ -2,8 +2,11 @@
 <div id = "list">
     <div *ngFor = "let type of masterVehicle.types" class = "type-node">
         {{type.name}} 
-        <div *ngFor = "let brand of type.brands">
+        <div *ngFor = "let brand of type.brands" class = "brand-node">
             {{brand.name}}
+            <div *ngFor = "let model of brand.models" class = "model-node">
+                {{model}}
+            </div>
         </div>
     </div>
 </div>
