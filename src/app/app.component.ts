@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { PassengerCarFactory } from './factories/passenger-car.factory';
-//import { VehicleBrand } from './models/enums.model';
 import { MasterVehicle } from './models/master-vehicle.model';
+import { PassengerCarFactory } from './factories/passenger-car.factory';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +11,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let masterVehice = new MasterVehicle();
     console.log(masterVehice);  
+
+    let passengerCar = new PassengerCarFactory().create();
+    console.log(passengerCar);
   }
 }
 

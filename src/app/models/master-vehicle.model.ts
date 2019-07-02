@@ -5,7 +5,6 @@ export class MasterVehicle {
     public types: VehicleType[];
 
     public constructor(){
-       // types.push(new VehicleType("bus", new VehicleBrand[]))
         this.types = [];
         let bmw = new VehicleBrand("BMW", ["m4","m5","m6"]);
         let fiat = new VehicleBrand("Fiat", ["125","126p","panda"]);

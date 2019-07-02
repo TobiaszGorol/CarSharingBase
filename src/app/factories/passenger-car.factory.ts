@@ -1,17 +1,24 @@
-/*import { PassengerCar } from '../models/passenger-car.model';
-import { VehicleBrand } from '../models/enums.model';
+import { VehicleBrand } from '../models/vehicle-brand.model';
+import { MasterVehicle } from '../models/master-vehicle.model';
 
 export class PassengerCarFactory {
-    public create(vehicleBrand: VehicleBrand): PassengerCar{
-        let newCar = new PassengerCar();
-        newCar.vehicleBrand = vehicleBrand;
-        return newCar;
+    public vehicleBrand: VehicleBrand;
+    public vehicleModel: string;    
+    public weight: number;
+    public hasGPS: boolean;
+    public capacity: number;
+    
+    public create(): MasterVehicle {
+    let newCar = new MasterVehicle();
+    this.weight = this.getRandomDigit(1000, 2500);
+    this.weight = this.getRandomDigit(0, 1);
+    this.weight = this.getRandomDigit(30, 60);
+
+    return newCar;
     }
 
-    protected getGoodDigitModel(): number {
-        if(VehicleBrand == "Opel") return Math.floor(Math.random(0, 3);
-        //else if ((VehicleBrand == ) return Math.floor(Math.random(4, 7);
-        //else if ((VehicleBrand == 2) Math.floor(Math.random(4, 7);
+    protected getRandomDigit(from: number, to: number): number {
+        return Math.floor(Math.random() * (to - from)) + from;
     }
-}*/
+}
 
