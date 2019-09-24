@@ -1,24 +1,37 @@
 import { VehicleBrand } from '../models/vehicle-brand.model';
-import { MasterVehicle } from '../models/master-vehicle.model';
+import { VehicleFactory } from './vehicle.factory';
+import { PassengerCar } from '../models/passenger-car.model';
+import { VehicleType } from '../models/enums.model';
+import { Utils } from '../utils/utils';
 
-export class PassengerCarFactory {
-    public vehicleBrand: VehicleBrand;
-    public vehicleModel: string;    
-    public weight: number;
-    public hasGPS: boolean;
-    public capacity: number;
+export class PassengerCarFactory extends VehicleFactory{
     
-    public create(): MasterVehicle {
-    let newCar = new MasterVehicle();
-    this.weight = this.getRandomDigit(1000, 2500);
-    this.weight = this.getRandomDigit(0, 1);
-    this.weight = this.getRandomDigit(30, 60);
-
-    return newCar;
+    constructor() {
+        super(VehicleType.PassengerCar);
     }
 
-    protected getRandomDigit(from: number, to: number): number {
-        return Math.floor(Math.random() * (to - from)) + from;
+    public create(): PassengerCar {
+        let newCar = new PassengerCar();
+        this.fillBaseVehicleData(newCar);
+
+        newCar.hasGPS = Utils.getRandomDigit(0,1) < 0.5;
+
+        return newCar;
+    }
+
+
+    protected getBrands(): VehicleBrand[] {
+        return [new VehicleBrand("BMW", ["m4","m5","m6"]),
+            new VehicleBrand("Fiat", ["125","126p","panda"])
+        ];
+    }
+
+    protected getMinWeight(): number {
+        return 900;
+    }
+
+    protected getMaxWeight(): number {
+        return 2500;
     }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MasterVehicle } from './models/master-vehicle.model';
 import { PassengerCarFactory } from './factories/passenger-car.factory';
+import { Vehicle } from './models/vehicle.model';
+import { VehicleRepository } from './repositories/vehicle.repository';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,14 @@ import { PassengerCarFactory } from './factories/passenger-car.factory';
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
-    let masterVehice = new MasterVehicle();
-    console.log(masterVehice);  
+
+    let repo = new VehicleRepository();
 
     let passengerCar = new PassengerCarFactory().create();
-    console.log(passengerCar);
+    repo.add(passengerCar);
+    console.table(repo.getAll());
+    repo.delete(passengerCar);
+    console.log(repo.getAll());
   }
 }
 

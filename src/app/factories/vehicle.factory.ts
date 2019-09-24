@@ -1,23 +1,26 @@
-/*import { Vehicle } from '../models/vehicle.model';
+import { Vehicle } from '../models/vehicle.model';
+import { VehicleBrand } from '../models/vehicle-brand.model';
 import { VehicleType } from '../models/enums.model';
+import { Utils } from '../utils/utils';
 
-export  class VehicleFactory {
+export abstract class VehicleFactory {
+
+    public type: VehicleType;
+    constructor(_type: VehicleType) {
+        this.type = _type;
+    }
+
     protected fillBaseVehicleData(vehicle: Vehicle) {
-        vehicle.vehicleBrand = this.getRandomDigit(0,5);
-        vehicle.yearOfProduction = this.getRandomDigit(2000, 2019);
-       // vehicle.vehicleModel = this.getRandomDigit();
+        let brand = this.getBrands()[Utils.getRandomDigit(0,this.getBrands().length-1)];
+        vehicle.brand = brand.name;
+        vehicle.model = brand.models[Utils.getRandomDigit(0,brand.models.length-1)];
+        vehicle.yearOfProduction = Utils.getRandomDigit(2000, 2019);
+        vehicle.weight = Utils.getRandomDigit(this.getMinWeight(), this.getMaxWeight());
+        vehicle.vehicleType = this.type;
     }
 
-    //protected abstract getMinWeight(): number;
-    //protected abstract getMaxWeight(): number;
+    protected abstract getMinWeight(): number;
+    protected abstract getMaxWeight(): number;
 
-    protected getRandomDigit(from: number, to: number): number {
-        return Math.floor(Math.random() * (to - from)) + from;
-    }
-
-    /*protected getGoodDigitModel(from: number, to: number): number {
-        if(vehicle.vehicleBrand == 0) Math.floor(Math.random(0, 3))
-        else if ((vehicle.vehicleBrand == 1) Math.floor(Math.random(4, 7)))
-        else if ((vehicle.vehicleBrand == 2) Math.floor(Math.random(4, 7)))
-    }
-}*/
+    protected abstract getBrands(): VehicleBrand[];
+}
